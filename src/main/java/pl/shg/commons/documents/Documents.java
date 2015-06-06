@@ -7,7 +7,6 @@
 package pl.shg.commons.documents;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import pl.shg.commons.friends.FriendDocument;
 import pl.shg.commons.settings.SettingDocument;
