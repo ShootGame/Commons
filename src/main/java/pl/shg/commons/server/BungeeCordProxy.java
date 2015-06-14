@@ -9,17 +9,18 @@ package pl.shg.commons.server;
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
+import pl.shg.commons.bukkit.UserUtils;
+import pl.shg.commons.translations.LangMessage;
 
 /**
  *
  * @author Aleksander
  */
 public class BungeeCordProxy implements IProxiedServer {
+    public static final LangMessage CONNECTING = new LangMessage("commons.bungee.connecting");
     private final Plugin plugin;
     
     public BungeeCordProxy(Plugin plugin) {
@@ -31,13 +32,12 @@ public class BungeeCordProxy implements IProxiedServer {
         ByteArrayOutputStream array = new ByteArrayOutputStream();
         DataOutputStream output = new DataOutputStream(array);
         
-        player.sendMessage(ChatColor.YELLOW + "Laczenie z serwerem " + ChatColor.AQUA + server.getName() + ChatColor.YELLOW + "...");
+        player.sendMessage(ChatColor.YELLOW + CONNECTING.getUserMessage(UserUtils.getUser(player), ChatColor.AQUA + server.getName() + ChatColor.YELLOW));
         try {
             output.writeUTF("Connect");
             output.writeUTF(server.getID());
         } catch (IOException ex) {
-            player.sendMessage(ChatColor.RED + "Nastapil blad podczas laczenia z serwerem " + server + ": " + ex.getMessage());
-            Logger.getLogger(BungeeCordProxy.class.getName()).log(Level.SEVERE, null, ex);
+            
         }
         
         player.sendPluginMessage(this.plugin, "BungeeCord", array.toByteArray());

@@ -6,10 +6,6 @@
  */
 package pl.shg.commons.settings;
 
-import java.util.UUID;
-import pl.shg.commons.documents.DocumentArray;
-import pl.shg.commons.documents.Documents;
-
 /**
  *
  * @author Aleksander
@@ -29,10 +25,6 @@ public class Setting {
             return this.getName().equals(((Setting) obj).getName());
         }
         return false;
-    }
-    
-    public void getAsyncDefinition(UUID uuid, DocumentArray array) {
-        Documents.of(SettingDocument.class); // get player
     }
     
     public String getName() {

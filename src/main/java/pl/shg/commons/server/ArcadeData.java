@@ -10,6 +10,7 @@ package pl.shg.commons.server;
  *
  * @author Aleksander
  */
+@Deprecated
 public class ArcadeData {
     public static final char SEPARATOR = '\u0040'; // @
     

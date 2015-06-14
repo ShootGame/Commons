@@ -8,11 +8,9 @@ package pl.shg.commons.util;
 
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-import net.minecraft.server.v1_8_R1.PacketPlayOutScoreboardTeam;
-import net.minecraft.server.v1_8_R1.Scoreboard;
-import net.minecraft.server.v1_8_R1.ScoreboardTeam;
+import net.minecraft.server.v1_8_R3.PacketPlayOutScoreboardTeam;
+import net.minecraft.server.v1_8_R3.Scoreboard;
+import net.minecraft.server.v1_8_R3.ScoreboardTeam;
 import org.apache.commons.lang.Validate;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;

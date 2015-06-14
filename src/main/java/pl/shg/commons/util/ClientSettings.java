@@ -6,9 +6,10 @@
  */
 package pl.shg.commons.util;
 
-import net.minecraft.server.v1_8_R1.EntityPlayer;
-import org.bukkit.craftbukkit.v1_8_R1.entity.CraftPlayer;
+import net.minecraft.server.v1_8_R3.EntityPlayer;
+import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
 import org.bukkit.entity.Player;
+import pl.shg.commons.users.ChatStatus;
 
 /**
  *

@@ -52,6 +52,14 @@ public class Servers {
         return online;
     }
     
+    public static int getOnlineCount() {
+        int count = 0;
+        for (TargetServer server : getServers()) {
+            count += server.getPlayers();
+        }
+        return count;
+    }
+    
     public static long getPingInterval() {
         return pingInterval;
     }
