@@ -37,8 +37,12 @@ public class XMLLangLoader extends LangLoader {
     public void load() {
         try {
             Document document = (Document) new SAXBuilder().build(this);
-            
             Element root = document.getRootElement();
+            
+            for (LangProperty property : LangProperty.values()) {
+                this.addProperty(root, property);
+            }
+            
             for (Element soft : root.getChildren()) {
                 for (Element translation : soft.getChildren()) {
                     this.registerTranslation(soft.getName(), translation);
@@ -49,11 +53,16 @@ public class XMLLangLoader extends LangLoader {
         }
     }
     
-    private void registerTranslation(String soft, Element element) {
-        String id = element.getName();
-        String message = element.getText();
+    private void addProperty(Element element, LangProperty property) {
+        String value = element.getAttributeValue(property.getKey());
         
-        this.addMessage(soft + "." + id, message);
+        if (value != null) {
+            this.addMessage(property.getFullKey(), value);
+        }
+    }
+    
+    private void registerTranslation(String soft, Element element) {
+        this.addMessage(soft + "." + element.getName(), element.getText());
     }
     
     public static boolean isXML(String filename) {

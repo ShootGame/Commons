@@ -7,9 +7,10 @@
 package pl.shg.commons.users;
 
 import java.util.Locale;
+import net.md_5.bungee.api.ChatMessageType;
+import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
 import net.md_5.bungee.protocol.DefinedPacket;
-import net.md_5.bungee.protocol.packet.Chat;
 
 /**
  *
@@ -35,17 +36,17 @@ public class BungeeUser extends LocalUser {
     
     @Override
     public void sendActionMessage(String message) {
-        this.sendPacket(new Chat(message, (byte) 2));
+        this.getBungee().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText(message));
     }
     
     @Override
     public void sendChatMessage(String message) {
-        this.sendPacket(new Chat(message, (byte) 0));
+        this.getBungee().sendMessage(ChatMessageType.CHAT, TextComponent.fromLegacyText(message));
     }
     
     @Override
     public void sendMessage(String message) {
-        this.sendPacket(new Chat(message, (byte) 1));
+        this.getBungee().sendMessage(ChatMessageType.SYSTEM, TextComponent.fromLegacyText(message));
     }
     
     @Override

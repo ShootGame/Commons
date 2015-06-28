@@ -43,7 +43,6 @@ public class BukkitUser extends LocalUser {
     
     @Override
     public Locale getLocale() {
-        System.out.println(this.locale.toLanguageTag());
         return this.locale;
     }
     

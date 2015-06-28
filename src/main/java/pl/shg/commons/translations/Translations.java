@@ -17,6 +17,8 @@ import java.util.Map;
  */
 public class Translations {
     public static final Locale DEFAULT = Locale.US; // en_US
+    public static final String PROPERTY_KEY = "_property";
+    
     private static final Map<String, Message> messages = new HashMap<>();
     
     public static void addMessage(Message message) {
@@ -35,5 +37,15 @@ public class Translations {
     
     public static Collection<Message> getMessages() {
         return messages.values();
+    }
+    
+    public static Object getProperty(String property) {
+        Message result = Translations.getMessage(Translations.PROPERTY_KEY + "." + property);
+        
+        if (result.exists()) {
+            return result;
+        } else {
+            return null;
+        }
     }
 }

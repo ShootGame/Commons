@@ -16,8 +16,6 @@ import java.util.Set;
  * @author Aleksander
  */
 public class Message {
-    public static final Message NOT_FOUND = new Message(null, "Tlumaczenie nie zostalo odnalezione.");
-    
     private final String key;
     private final Locale locale;
     private final Map<Locale, String> values = new HashMap<>();
@@ -43,6 +41,14 @@ public class Message {
     
     public final void add(Locale locale, String value) {
         this.values.put(locale, value);
+    }
+    
+    public boolean exists() {
+        return this.exists(this.getDefaultLocale());
+    }
+    
+    public boolean exists(Locale inLocale) {
+        return !this.getKey().equals(this.get(inLocale));
     }
     
     public String get(Locale locale) {
