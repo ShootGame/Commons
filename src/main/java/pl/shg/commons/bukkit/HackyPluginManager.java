@@ -7,6 +7,7 @@
 package pl.shg.commons.bukkit;
 
 import java.io.File;
+import java.util.Collection;
 import java.util.Set;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Event;
@@ -178,5 +179,25 @@ public class HackyPluginManager implements PluginManager {
     
     public static SimplePluginManager getPluginManager() {
         return manager;
+    }
+    
+    @Override
+    public Collection<? extends tc.oc.minecraft.api.plugin.Plugin> getAllPlugins() {
+        return getPluginManager().getAllPlugins();
+    }
+    
+    @Override
+    public void registerListener(tc.oc.minecraft.api.plugin.Plugin plugin, tc.oc.minecraft.api.event.Listener ll) {
+        getPluginManager().registerListener(plugin, ll);
+    }
+    
+    @Override
+    public void unregisterListener(tc.oc.minecraft.api.event.Listener ll) {
+        getPluginManager().unregisterListener(ll);
+    }
+    
+    @Override
+    public void unregisterListeners(tc.oc.minecraft.api.plugin.Plugin plugin) {
+        getPluginManager().unregisterListeners(plugin);
     }
 }
